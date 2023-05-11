@@ -1,0 +1,19 @@
+Henda Xu       Zijin liao
+xuhengda       liaoziji
+
+Discussion
+The starvation will not happen when using this moniter.  
+Starvation happens when mutiple jobs aquire for the same resource and the order of gaining 
+the resource can be determined by the unfair strategy such as the priority of the jobs.  
+However, in our code, the jobs are added into queues which obtain FIFO. 
+Therefore, for jobs in the same queue, only the earlies job can 
+acquire for the resource and later job has to wait it to finish.  Since by this strategy, 
+the waiting time of each job is guaranted and every job has a fairly way to acquire for the 
+resource, Starvation will not happen. 
+Since in a single queue, only the earlies job can acquire for the resource.  Then we should
+consider for the job in different queues. Becuase the thread are excuting randomly and every 
+thread have an equal chance to be excuted, the earlies jobs in the queues have an equal chance 
+to gain the resources. By the definition of starvation, it occurs when an unfair strategy is 
+used to disturbate resouces for the jobs.  Since in our code, the order of jobs acquiring for 
+the resources is randomly and have an equal chance, therefore, it against the definition and 
+starvation will not occur.

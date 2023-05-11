@@ -1,0 +1,66 @@
+Q2: [ 6 marks] Short answer
+
+For each of the following code snippets, assume that the code leading up to the
+snippet is correct and complete.
+ i) Explain what might cause the specified return value. Be precise. 
+    it is not sufficient to say that an error occurred, or the call succeeded.  
+ii) Does the specified return value indicate that the process should terminate
+    immediately?  Explain your answer.
+
+a) 
+char *ptr = malloc(sizeof(char) * 10000);
+// returns NULL
+
+EXPLAIN CAUSE: The heap is out of memory
+
+SHOULD EXIT?  Yes, since the heap is out memory, the other malloc data will not be saved as well. 
+
+
+b) Assume buf is correctly initialized, and that fd is an open descriptor 
+   on a socket.
+
+int n = read(fd, buf, sizeof(buf));
+// returns 0
+
+EXPLAIN CAUSE: The data in fd is empty and have nothing to read 
+
+SHOULD EXIT? No, this is not error, it only tells us that there is nothing to be read 
+
+
+c) 
+int status;
+int result = wait(&status);
+//returns -1
+
+EXPLAIN CAUSE: No child process is waited 
+
+SHOULD EXIT?  Yes, the next instruction assoicated with wait() will not be executed 
+
+
+d) int ret = fork();
+// returns -1
+
+EXPLAIN CAUSE: Already have too many process and no memory for new process 
+
+SHOULD EXIT?  Yes, unable to create any process, so no new process can be read from or write to 
+
+
+e) int ret = fork();
+// returns 0
+
+EXPLAIN CAUSE: This is a child process 
+
+SHOULD EXIT?  No, this is not error, it shows the current process is a child process and it is common result 
+
+
+f) Assume listenfd is the return value of socket, and bind and listen have
+   also been called on listenfd.  All calls have been successful. 
+   rset has been set up appropriately.
+
+FD_ISSET(listenfd, &rset);
+// returns 1
+
+EXPLAIN CAUSE: listenfd is in rset 
+
+
+SHOULD EXIT? No, it tells us there is something writen to listenfd and we can get it from listenfd 
